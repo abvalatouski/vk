@@ -1,8 +1,8 @@
 **/private
 
-# IDE.
-.vscode
-hie.yaml
+# # IDE.
+# .vscode
+# hie.yaml
 
 # Stack.
 **/.stack-work

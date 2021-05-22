@@ -1,0 +1,9 @@
+cradle:
+  stack:
+    - component: vk-api:lib
+      path:      vk-api/src
+
+    - component: hello-world:exe:hello-world
+      path:      examples/hello-world/app
+    - component: message-repeater:exe:message-repeater
+      path:      examples/message-repeater/app
