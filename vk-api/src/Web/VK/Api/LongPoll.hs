@@ -30,7 +30,7 @@ import           Web.VK.Api.Events
 import           Web.VK.Api.Method
 import           Web.VK.Api.Param
 
--- Obtaining Long Poll API server
+-- Obtaining Long Poll API server.
 
 data Server' = Server'
     { serverKey       :: !Text
