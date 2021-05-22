@@ -46,13 +46,13 @@ data MethodError = MethodError
   deriving anyclass Exception
 
 instance Show MethodError where
-    show (MethodError code message payload) =
-        "MethodError " <> unlines
-            [ "{ " <> show code
-            , ", " <> show message
-            , ", " <> show payload
-            , "}"
-            ]
+    show (MethodError code message payload) = unlines
+        [ "MethodError"
+        , "    { " <> show code
+        , "    , " <> show message
+        , "    , " <> show payload
+        , "    }"
+        ]
 
 instance FromJSON MethodError where
     parseJSON = Json.withObject "API method error" $ evalStateT do
