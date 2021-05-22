@@ -85,8 +85,9 @@ callMethod_ name params conn = do
     pure ()
 
 sendMethodRequest :: FromJSON a => Net.Request -> ApiConn -> IO a
-sendMethodRequest request ApiConn { .. } = withMVar apiConnLocker $ const do
-    response <- Net.responseBody <$> Net.httpLbs request apiConnManager
+sendMethodRequest request ApiConn { .. } = do
+    response <- withMVar apiConnLocker $ const $
+        Net.responseBody <$> Net.httpLbs request apiConnManager
     case Json.decode' response of
         Just (MethodSuccess value)              -> pure value
         Just (MethodFailure MethodError { .. }) -> throw MethodError { .. }
