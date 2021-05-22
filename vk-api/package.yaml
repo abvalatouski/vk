@@ -8,6 +8,7 @@ library:
   source-dirs: src
   other-modules:
     - Web.VK.Api.CommonTypes
+    - Web.VK.Api.Method
     - Web.VK.Api.Param
   dependencies:
     - aeson
@@ -19,9 +20,13 @@ library:
     - random
     - split
     - text
+    - transformers
+    - unordered-containers
   default-extensions:
     - BlockArguments
     - DeriveAnyClass
     - DerivingStrategies
     - DerivingVia
     - GeneralizedNewtypeDeriving
+    - OverloadedStrings
+    - RecordWildCards
