@@ -8,8 +8,10 @@ library:
   source-dirs: src
   exposed-modules:
     - Web.VK.Api
+    - Web.VK.Api.LongPoll
   other-modules:
     - Web.VK.Api.CommonTypes
+    - Web.VK.Api.Events
     - Web.VK.Api.Method
     - Web.VK.Api.Param
   dependencies:
@@ -32,3 +34,4 @@ library:
     - GeneralizedNewtypeDeriving
     - OverloadedStrings
     - RecordWildCards
+    - ScopedTypeVariables
