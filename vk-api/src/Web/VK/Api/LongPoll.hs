@@ -1,6 +1,8 @@
 module Web.VK.Api.LongPoll
-    ( LongPollServer
+    ( -- * Server
+      LongPollServer
     , getLongPollServer
+
       -- * Events
     , awaitEvents
     , Event (MessageNew, OtherEvent)
