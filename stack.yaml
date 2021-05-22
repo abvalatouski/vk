@@ -1,4 +1,6 @@
 resolver: lts-16.20
 packages:
   - vk-api
+  
   - examples/hello-world
+  - examples/message-repeater
