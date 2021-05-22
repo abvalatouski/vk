@@ -18,10 +18,10 @@ import qualified Web.VK.Api     as VK
 main :: IO ()
 main = do
     -- Don't forget to create "private" directory with your secrets.
-    let token   = $(embedStringFile "private/api-token")
-        version = $(embedStringFile "private/api-version")
+    let apiToken   = $(embedStringFile "private/api-token")
+        apiVersion = $(embedStringFile "private/api-version")
         me      = $(embedStringFile "private/my-id")
-    conn <- VK.mkApiConnDefault token version
+    conn <- VK.mkApiConnDefault apiToken apiVersion
     sendMessage "Hello, world!" me conn
 
 -- See "https://vk.com/dev/messages.send".
@@ -51,10 +51,10 @@ import qualified Web.VK.Api.LongPoll as VK
 main :: IO ()
 main = do
     -- Don't forget to create "private" directory with your secrets.
-    let token   = $(embedStringFile "private/api-token")
-        version = $(embedStringFile "private/api-version")
-        groupId = $(embedStringFile "private/group-id")
-    conn   <- VK.mkApiConnDefault token version
+    let apiToken   = $(embedStringFile "private/api-token")
+        apiVersion = $(embedStringFile "private/api-version")
+        groupId    = $(embedStringFile "private/group-id")
+    conn   <- VK.mkApiConnDefault apiToken apiVersion
     server <- VK.getLongPollServer groupId conn
     forever $ mapM_ (handleEvent conn) =<< VK.awaitEvents conn server
 
@@ -71,4 +71,5 @@ sendMessage text userId conn = do
     let method = "messages.send"
         params = ["peer_id" @= userId, "random_id" @= randomId, "message" @= text]
     VK.callMethod_ method params conn
+
 ```

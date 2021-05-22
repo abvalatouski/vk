@@ -13,10 +13,10 @@ import qualified Web.VK.Api.LongPoll as VK
 main :: IO ()
 main = do
     -- Don't forget to create "private" directory with your secrets.
-    let token   = $(embedStringFile "private/api-token")
-        version = $(embedStringFile "private/api-version")
-        groupId = $(embedStringFile "private/group-id")
-    conn   <- VK.mkApiConnDefault token version
+    let apiToken   = $(embedStringFile "private/api-token")
+        apiVersion = $(embedStringFile "private/api-version")
+        groupId    = $(embedStringFile "private/group-id")
+    conn   <- VK.mkApiConnDefault apiToken apiVersion
     server <- VK.getLongPollServer groupId conn
     forever $ mapM_ (handleEvent conn) =<< VK.awaitEvents conn server
 

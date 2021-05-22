@@ -9,10 +9,10 @@ import qualified Web.VK.Api     as VK
 main :: IO ()
 main = do
     -- Don't forget to create "private" directory with your secrets.
-    let token   = $(embedStringFile "private/api-token")
-        version = $(embedStringFile "private/api-version")
+    let apiToken   = $(embedStringFile "private/api-token")
+        apiVersion = $(embedStringFile "private/api-version")
         me      = $(embedStringFile "private/my-id")
-    conn <- VK.mkApiConnDefault token version
+    conn <- VK.mkApiConnDefault apiToken apiVersion
     sendMessage "Hello, world!" me conn
 
 -- See "https://vk.com/dev/messages.send".
