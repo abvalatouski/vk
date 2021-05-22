@@ -19,6 +19,7 @@ library:
     - aeson
     - base
     - bytestring
+    - hashable
     - http-client
     - http-client-tls
     - network-uri

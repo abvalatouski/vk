@@ -11,6 +11,7 @@ import           Text.Read
 import           Data.Aeson              (FromJSON)
 import qualified Data.ByteString.Builder as BS
 import qualified Data.ByteString.Lazy    as Lazy (ByteString)
+import           Data.Hashable           (Hashable)
 import           Data.List.Split
 import           Data.Text               (Text)
 import qualified Data.Text               as Text
@@ -74,6 +75,7 @@ newtype Id = Id
     , Encode
     , Random
     , FromJSON
+    , Hashable
     )
 
 instance IsString Id where
