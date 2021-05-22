@@ -1,0 +1,10 @@
+name:     vk-api
+version:  0.0.1
+synopsis: Dealing with VKontakte API
+category: API, VK, Web
+author:   Aliaksei Valatouski
+
+library:
+  source-dirs: src
+  dependencies:
+    - base
