@@ -8,7 +8,6 @@ import           Data.String
 import           Text.Read
 
 import           Data.Aeson              (FromJSON)
-import qualified Data.Aeson              as Json
 import qualified Data.ByteString.Builder as BS
 import           Data.List.Split
 import           Data.Text               (Text)
