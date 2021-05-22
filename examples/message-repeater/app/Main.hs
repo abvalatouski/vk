@@ -6,7 +6,6 @@ import           Control.Monad
 
 import           Data.FileEmbed      (embedStringFile)
 import           Data.Text           (Text)
-import qualified Data.Text.IO        as Text
 import           Web.VK.Api          ((@=))
 import qualified Web.VK.Api          as VK
 import qualified Web.VK.Api.LongPoll as VK
