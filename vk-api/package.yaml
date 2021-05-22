@@ -21,6 +21,7 @@ library:
     - text
   default-extensions:
     - BlockArguments
+    - DeriveAnyClass
     - DerivingStrategies
     - DerivingVia
     - GeneralizedNewtypeDeriving

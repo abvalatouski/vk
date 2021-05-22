@@ -1,6 +1,7 @@
 module Web.VK.Api.CommonTypes
   where
 
+import           Control.Exception
 import           Control.Concurrent
 import           Data.Int
 import           Data.Maybe
@@ -9,6 +10,7 @@ import           Text.Read
 
 import           Data.Aeson              (FromJSON)
 import qualified Data.ByteString.Builder as BS
+import qualified Data.ByteString.Lazy    as Lazy (ByteString)
 import           Data.List.Split
 import           Data.Text               (Text)
 import qualified Data.Text               as Text
@@ -107,3 +109,7 @@ mkApiConnDefault :: ApiToken -> ApiVersion -> IO ApiConn
 mkApiConnDefault token version = do
     manager <- Net.newTlsManager
     mkApiConn (Port 443) manager token version
+
+newtype UnhandledApiResponse = UnhandledApiResponse Lazy.ByteString
+  deriving stock    Show
+  deriving anyclass Exception
