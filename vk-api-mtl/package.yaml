@@ -1,0 +1,25 @@
+name:     vk-api-mtl
+version:  0.0.1
+synopsis: Dealing with VKontakte API in MTL style
+category: API, VK, Web
+author:   Aliaksei Valatouski
+
+library:
+  source-dirs: src
+  exposed-modules:
+    - Web.VK.Api.Mtl
+    - Web.VK.Api.LongPoll.Mtl
+  other-modules:
+    - Web.VK.Api.CommonTypes.Mtl
+  dependencies:
+    - aeson
+    - base
+    - exceptions
+    - mtl
+    - text
+    - vk-api
+  default-extensions:
+    - BlockArguments
+    - DerivingStrategies
+    - FlexibleContexts
+    - GeneralizedNewtypeDeriving

@@ -2,6 +2,8 @@ cradle:
   stack:
     - component: vk-api:lib
       path:      vk-api/src
+    - component: vk-api-mtl:lib
+      path:      vk-api-mtl/src
 
     - component: hello-world:exe:hello-world
       path:      examples/hello-world/app

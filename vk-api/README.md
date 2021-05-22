@@ -1,8 +1,8 @@
 # Dealing with VKontakte API
 
 All the examples contain **extremely verbose** passing of API connection from function to function,
-which can be fixed with `ReaderT` monad transformer. Also you can use `vk-api-mtl` package
-_(currently unimplemented)_ which wraps `vk-api` code inside monad transformers.
+which can be fixed with `ReaderT` monad transformer. Also you can use `vk-api-mtl` package which
+wraps `vk-api` code inside monad transformers.
 
 ## Example 1. Hello, world!
 
