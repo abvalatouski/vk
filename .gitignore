@@ -1,3 +1,5 @@
+**/private
+
 # IDE.
 .vscode
 hie.yaml

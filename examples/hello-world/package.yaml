@@ -1,0 +1,10 @@
+name: hello-world
+
+executable:
+  source-dirs: app
+  main:        Main.hs
+  dependencies:
+    - base
+    - file-embed
+    - text
+    - vk-api
