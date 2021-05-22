@@ -6,6 +6,8 @@ author:   Aliaksei Valatouski
 
 library:
   source-dirs: src
+  exposed-modules:
+    - Web.VK.Api
   other-modules:
     - Web.VK.Api.CommonTypes
     - Web.VK.Api.Method
