@@ -3,7 +3,7 @@ module Web.VK.Api.LongPoll.Mtl
       MonadLongPoll (askLongPollServer)
     , LongPollT (LongPollT, runLongPollT)
     , LongPollM
-    , runLongPoll
+    , runLongPollApi
 
       -- * Server
     , LongPollServer
@@ -40,8 +40,8 @@ newtype LongPollT m a = LongPollT
     , Applicative
     , Monad
     , MonadIO
-    , MonadCatch
     , MonadThrow
+    , MonadCatch
     )
 
 instance MonadTrans LongPollT where
@@ -57,11 +57,13 @@ instance MonadApi m => MonadLongPoll (LongPollT m) where
 type LongPollM = LongPollT ApiM
 
 -- | Runs an action in the context of Long Poll API.
-{-# ANN runLongPoll ("HLint: ignore" :: String) #-}
-runLongPoll :: (MonadIO m, MonadCatch m, MonadThrow m) => LongPollT m a -> ApiConn -> Id -> m a
-runLongPoll action conn groupId = flip runApi conn do
+{-# ANN runLongPollApi ("HLint: Ignore" :: String) #-}
+runLongPollApi ::
+    (MonadIO m, MonadThrow m, MonadCatch m)
+ => LongPollT (ApiT m) a -> Id -> ApiConn -> m a
+runLongPollApi action groupId conn = flip runApi conn do
     server <- getLongPollServer groupId
-    lift $ runReaderT (runLongPollT action) server
+    runReaderT (runLongPollT action) server
 
 -- | See [VK documentation](https://vk.com/dev/messages.getLongPollServer).
 getLongPollServer :: MonadApi m => Id -> m LongPollServer
