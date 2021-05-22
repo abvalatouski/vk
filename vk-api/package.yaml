@@ -7,13 +7,20 @@ author:   Aliaksei Valatouski
 library:
   source-dirs: src
   other-modules:
+    - Web.VK.Api.CommonTypes
     - Web.VK.Api.Param
   dependencies:
     - aeson
     - base
     - bytestring
     - http-client
+    - http-client-tls
     - network-uri
+    - random
+    - split
     - text
   default-extensions:
+    - BlockArguments
+    - DerivingStrategies
     - DerivingVia
+    - GeneralizedNewtypeDeriving
