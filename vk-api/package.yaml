@@ -15,6 +15,7 @@ library:
     - Web.VK.Api.Method
     - Web.VK.Api.Param
   dependencies:
+    - attoparsec
     - aeson
     - base
     - bytestring
