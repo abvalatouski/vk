@@ -1,0 +1,10 @@
+name: hello-world-mtl
+
+executable:
+  source-dirs: app
+  main:        Main.hs
+  dependencies:
+    - base
+    - file-embed
+    - text
+    - vk-api-mtl

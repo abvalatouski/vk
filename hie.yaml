@@ -9,3 +9,7 @@ cradle:
       path:      examples/hello-world/app
     - component: message-repeater:exe:message-repeater
       path:      examples/message-repeater/app
+    - component: hello-world-mtl:exe:hello-world-mtl
+      path:      examples/hello-world-mtl/app
+    - component: message-repeater-mtl:exe:message-repeater-mtl
+      path:      examples/message-repeater-mtl/app
