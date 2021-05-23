@@ -1,3 +1,5 @@
+## Functionality
+
 Packages:
 - `vk-api` - working with the API inside plain `IO` monad (can be easily tested inside GHCi) (see
    `examples/` and `vk-api/README`);
@@ -6,7 +8,9 @@ Packages:
    `vk-api-mtl/README`).
 
 Currently implemented:
-- Calling API methods (`callMethod` and `callMethod_` functions);
-- Long Poll API support (`awaitEvents` function);
+- Calling [API methods](https://vk.com/dev/methods) (`callMethod` and `callMethod_` functions);
+- [Long Poll API](https://vk.com/dev/bots_longpoll) support (`awaitEvents` function);
 - Events:
-  - `message_new`.
+  - `message_new` with incomplete `message` object.
+
+Target API version: `5.126`.
