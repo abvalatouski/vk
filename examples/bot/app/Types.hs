@@ -11,7 +11,7 @@ import qualified Web.VK.Api.Mtl          as VK
 import qualified Web.VK.Api.LongPoll.Mtl as VK
 
 data BotStatus = Active | Sleeping
-  deriving stock Show
+  deriving stock (Show, Eq)
 
 newtype BotState = BotState
     { _botStatus :: BotStatus
