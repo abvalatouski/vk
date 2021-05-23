@@ -20,7 +20,7 @@ main = do
     -- Don't forget to create "private" directory with your secrets.
     let apiToken   = $(embedStringFile "private/api-token")
         apiVersion = $(embedStringFile "private/api-version")
-        me      = $(embedStringFile "private/my-id")
+        me         = $(embedStringFile "private/my-id")
     conn <- VK.mkApiConnDefault apiToken apiVersion
     sendMessage "Hello, world!" me conn
 
