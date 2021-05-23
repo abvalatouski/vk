@@ -1,0 +1,27 @@
+name: bot
+
+executable:
+  source-dirs: app
+  main:        Main.hs
+  dependencies:
+    - attoparsec
+    - base
+    - exceptions
+    - file-embed
+    - microlens
+    - microlens-mtl
+    - microlens-th
+    - mtl
+    - text
+    - vk-api-mtl
+    - unordered-containers
+  default-extensions:
+    - BlockArguments
+    - DerivingStrategies
+    - GeneralizedNewtypeDeriving
+    - LambdaCase
+    - OverloadedLists
+    - OverloadedStrings
+    - RankNTypes
+    - RecordWildCards
+    - TemplateHaskell

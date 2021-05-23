@@ -7,3 +7,4 @@ packages:
   - examples/message-repeater
   - examples/hello-world-mtl
   - examples/message-repeater-mtl
+  - examples/bot

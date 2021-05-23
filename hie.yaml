@@ -13,3 +13,5 @@ cradle:
       path:      examples/hello-world-mtl/app
     - component: message-repeater-mtl:exe:message-repeater-mtl
       path:      examples/message-repeater-mtl/app
+    - component: bot:exe:bot
+      path:      examples/bot/app
