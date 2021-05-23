@@ -5,6 +5,7 @@ executable:
   main:        Main.hs
   other-modules:
     - ApiMethods
+    - Commands
     - Types
   dependencies:
     - attoparsec
@@ -21,6 +22,7 @@ executable:
   default-extensions:
     - BlockArguments
     - DerivingStrategies
+    - GADTs
     - GeneralizedNewtypeDeriving
     - LambdaCase
     - OverloadedLists
@@ -28,3 +30,4 @@ executable:
     - RankNTypes
     - RecordWildCards
     - TemplateHaskell
+    - TypeApplications

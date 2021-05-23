@@ -4,6 +4,7 @@ import           Text.Printf
 import           Control.Monad.State
 import           Data.FileEmbed          (embedStringFile)
 import qualified Data.HashMap.Strict     as HashMap
+import           Data.Text               (Text)
 import           Lens.Micro
 import           Lens.Micro.Mtl
 import           Web.VK.Api.Mtl          ((@=))
@@ -11,6 +12,7 @@ import qualified Web.VK.Api.Mtl          as VK
 import qualified Web.VK.Api.LongPoll.Mtl as VK
 
 import           ApiMethods
+import           Commands
 import           Types
 
 main :: IO ()
@@ -24,7 +26,7 @@ bot :: BotM ()
 bot = forever do
     events <- VK.awaitEvents
     forM_ events \case 
-        VK.MessageNew VK.Message { .. } -> do
+        VK.MessageNew message@VK.Message { .. } -> do
             conversations <- get
             unless (HashMap.member messagePeerId conversations) do
                 let botState = BotState Sleeping
@@ -34,24 +36,24 @@ bot = forever do
             case messageAction of
                 -- Yay! We've just been invited!
                 Just (VK.ChatInviteUserById id) | id == -groupId -> do
-                    let greeting = "Hello!"
-                    sendMessage greeting messagePeerId
+                    let greeting =
+                           "Hello!\n\
+                            \Type /? to find out more about me." :: Text
+                    sendMessage messagePeerId greeting
                 _ ->
                     pure ()
 
             currentStatus <- use $ conversation messagePeerId . conversationBotState . botStatus
-            case messageText of
-                "/on"  ->
-                    if currentStatus /= Active then do
-                        conversation messagePeerId . conversationBotState . botStatus .= Active
-                        sendMessage "Now the bot is active." messagePeerId
-                    else
-                        sendMessage "The bot is already active." messagePeerId
-                "/off" ->
-                    when (currentStatus /= Sleeping) do
-                        conversation messagePeerId . conversationBotState . botStatus .= Sleeping
-                        sendMessage "Now the bot is sleeping." messagePeerId
-                _ ->
+            case parseSomeCommand messageText of
+                Just (Right command) ->
+                    runSomeCommand command message
+                Just (Left NoSuchCommand) ->
+                    sendMessage messagePeerId ("No such command." :: Text)
+                Just (Left (CannotParseCommand (SomeCommand proxy))) -> do
+                    let error = "Wrong command syntax.\n" <> commandSyntax proxy
+                    sendMessage messagePeerId error
+                Nothing ->
+                    -- This is not command. Ignore the message.
                     pure ()
         _ ->
             pure ()
