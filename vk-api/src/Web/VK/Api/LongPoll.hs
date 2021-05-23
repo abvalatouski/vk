@@ -1,6 +1,6 @@
 module Web.VK.Api.LongPoll
     ( -- * Server
-      LongPollServer
+      LongPollServer (longPollGroupId)
     , getLongPollServer
 
       -- * Events

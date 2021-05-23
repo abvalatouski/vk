@@ -1,6 +1,7 @@
 module Web.VK.Api.LongPoll.Mtl
     ( -- * MTL-style interface
       MonadLongPoll (askLongPollServer)
+    , askGroupId
     , LongPollT (LongPollT, runLongPollT)
     , LongPollM
     , runLongPollApi
@@ -30,6 +31,10 @@ import           Web.VK.Api.CommonTypes.Mtl
 class MonadApi m => MonadLongPoll m where
     -- | Acquires Long Poll server from the context.
     askLongPollServer :: m LongPollServer
+
+-- | Acquires group ID from the context.
+askGroupId :: MonadLongPoll m => m Id
+askGroupId = longPollGroupId <$> askLongPollServer
 
 -- | Default Long Poll API transformer.
 newtype LongPollT m a = LongPollT
