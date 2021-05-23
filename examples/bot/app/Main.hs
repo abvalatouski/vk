@@ -48,10 +48,12 @@ bot = forever do
                 Just (Right command) ->
                     runSomeCommand command message
                 Just (Left NoSuchCommand) ->
-                    sendMessage messagePeerId ("No such command." :: Text)
-                Just (Left (CannotParseCommand (SomeCommand proxy))) -> do
-                    let error = "Wrong command syntax.\n" <> commandSyntax proxy
-                    sendMessage messagePeerId error
+                    when (currentStatus == Active) do
+                        sendMessage messagePeerId ("No such command." :: Text)
+                Just (Left (CannotParseCommand (SomeCommand proxy))) ->
+                    when (currentStatus == Active || commandName proxy == "on") do
+                        let error = "Wrong command syntax. Expected:\n" <> commandSyntax proxy
+                        sendMessage messagePeerId error
                 Nothing ->
                     -- This is not command. Ignore the message.
                     pure ()

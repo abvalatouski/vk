@@ -82,7 +82,8 @@ commandProxies =
 commandProxiesTable :: HashMap Text (SomeCommand Proxy)
 commandProxiesTable =
     HashMap.fromList
-  $ fmap (\(SomeCommand proxy) -> (commandName proxy, SomeCommand proxy)) commandProxies
+  $ fmap (\(SomeCommand proxy) -> (commandName proxy, SomeCommand proxy))
+    commandProxies
 
 -- Prints the given message.
 newtype Print = Print Text
