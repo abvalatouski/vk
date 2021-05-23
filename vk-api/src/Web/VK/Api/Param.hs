@@ -13,6 +13,9 @@ import qualified Data.Aeson.Encoding     as Json
 import qualified Data.ByteString.Builder as BS
 import           Data.Text               (Text)
 import qualified Data.Text               as Text
+import qualified Data.Text.Lazy          as Lazy (Text)
+import qualified Data.Text.Lazy          as Lazy.Text
+import qualified Data.Text.Lazy.Builder  as Text
 import qualified Network.HTTP.Client     as Net
 import qualified Network.URI             as Net
 
@@ -68,6 +71,12 @@ instance Encode Double where
 
 instance Encode Text where
     encode = foldMap encode . Text.unpack
+
+instance Encode Lazy.Text where
+    encode = foldMap encode . Lazy.Text.toChunks
+
+instance Encode Text.Builder where
+    encode = encode . Text.toLazyText
 
 instance ToJSON tag => Encode (Json.Encoding' tag) where
     encode = Json.fromEncoding
