@@ -2,7 +2,8 @@
 
 All the examples contain **extremely verbose** passing of API connection from function to function,
 which can be fixed with `ReaderT` monad transformer. Also you can use `vk-api-mtl` package which
-wraps `vk-api` code inside monad transformers.
+wraps `vk-api` code inside monad transformers and type classes
+([MTL](https://hackage.haskell.org/package/mtl) style).
 
 ## Example 1. Hello, world!
 
