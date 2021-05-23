@@ -28,10 +28,9 @@ class Command a where
 
 commandHelp :: Command a => Proxy a -> Text.Builder
 commandHelp proxy =
-    let name   = Text.fromText $ commandName proxy
-        desc   = commandDesc proxy
+    let desc   = commandDesc proxy
         syntax = commandSyntax proxy
-     in "Command: /" <> name <> "\n\n" <> desc <> "\n\nSyntax:\n" <> syntax
+     in syntax <> "\n\n" <> desc
 
 -- Helps to use dynamic dispatch.
 data SomeCommand f where
